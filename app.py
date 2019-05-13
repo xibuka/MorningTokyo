@@ -1,8 +1,6 @@
 #!/opt/app-root/bin/python
 #-*- coding: UTF-8 -*-
 
-#import sys
-#import os
 import time
 import requests
 import argparse
@@ -15,9 +13,10 @@ hds=[{'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) 
 
 # Google chat room URL, need token from args
 chatRoomUrl="https://chat.googleapis.com/v1/spaces/AAAAPwc3WLo/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token="
+##chatRoomUrl="https://chat.googleapis.com/v1/spaces/AAAAG7Diznc/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token="
 
 # Greeting 
-greeting="おはようございます！本日東京の天気とITニュースです。\n\n"
+greeting="おはよう！東京の天気とITニュースです。\n\n"
 
 # weather URL 
 weatherUrl='https://weather.yahoo.co.jp/weather/jp/13/4410.html' # Tokyo
