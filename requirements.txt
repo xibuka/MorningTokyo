@@ -2,3 +2,5 @@ BeautifulSoup4
 requests
 argparse
 httplib2
+wheel
+feedparser
