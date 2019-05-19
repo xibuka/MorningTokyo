@@ -13,6 +13,13 @@ chatRoomUrl="https://chat.googleapis.com/v1/spaces/AAAAPwc3WLo/messages?key=AIza
 # rss URL
 rssList=[
         'http://feeds.japan.zdnet.com/rss/zdnet/all.rdf',
+        'https://news.yahoo.co.jp/pickup/computer/rss.xml',
+        'https://rss.itmedia.co.jp/rss/2.0/news_bursts.xml',
+        'https://rss.itmedia.co.jp/rss/2.0/ait.xml',
+        'https://tech.nikkeibp.co.jp/rss/index.rdf',
+        'https://jp.techcrunch.com/feed/',
+        'http://feeds.japan.cnet.com/rss/cnet/all.rdf',
+        'https://weekly.ascii.jp/cate/1/rss.xml',
         ]
 
 # Keywork List
@@ -23,8 +30,13 @@ keywordList=[
         'OpenStack',
         'Kubernetes',
         'Redhat',
+        'Red hat',
+        'レッドハット',
         'Microsoft',
+        'マイクロソフト',
         'Yahoo!Japan',
+        '買収',
+        '日立製作所',
         ]
 
 sentLinks='/tmp/sentLinks'
@@ -62,7 +74,9 @@ def rssBot(rssLink):
 
             for keyword in keywordList:
                 if keyword in entry.title:
-                    print(entry.title + ' ' + entry.link)
+                    #print(entry.title + ' ' + entry.link)
+                    sendChat(chatRoomUrl + token, entry.title + ' ' + entry.link)
+
                     f = open(sentLinks, 'a+')
                     f.write(entry.link + '\n')
                     f.close()
