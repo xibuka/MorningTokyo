@@ -35,8 +35,12 @@ keywordList=[
         'Microsoft',
         'マイクロソフト',
         'Yahoo!Japan',
+        'ヤフー',
         '買収',
         '日立製作所',
+        'VMware',
+        'IBM',
+        'SUSE',
         ]
 
 sentLinks='/tmp/sentLinks'
