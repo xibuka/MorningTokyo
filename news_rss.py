@@ -43,6 +43,9 @@ keywordList=[
         'SUSE',
         'クラウド',
         'cloud',
+        'Dell',
+        'nuc'
+        'Intel'
         ]
 
 sentLinks='/tmp/sentLinks'
