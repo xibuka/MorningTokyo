@@ -41,14 +41,15 @@ keywordList=[
         'VMware',
         'IBM',
         'SUSE',
-        'クラウド',
-        'cloud',
+#        'クラウド',
+#        'cloud',
         'Dell',
         'nuc'
         'Intel'
         ]
 
 sentLinks='/tmp/sentLinks'
+sentTitles='/tmp/sentTitles'
 
 # Hangouts Chat incoming webhook
 def sendChat(chatRoom, chatContent):
@@ -65,30 +66,43 @@ def sendChat(chatRoom, chatContent):
         body=dumps(bot_message),
     )
 
+
+def readFile(sentFile):
+    try:
+        with open(sentFile) as f:
+            sentList = f.read().splitlines()
+    except IOError:
+        sentList = []
+
+    return sentList
+
+def writeFile(writeFile, data):
+    f = open(writeFile, 'a+')
+    f.write(data + '\n')
+    f.close()
+
 def rssBot(rssLink):
 
-    # open and read file which contains already sent link
-    try:
-        with open(sentLinks) as f:
-            sentLinkList = f.read().splitlines()
-    except IOError:
-        sentLinkList = []
+    # open and read file which contains already sent link and title
+    # return a list
+    sentLinkList = readFile(sentLinks)
+    sentTitleList = readFile(sentTitles)
 
     # get rss data and parse to d
     d=feedparser.parse(rssLink)
 
     for entry in d.entries:
         # haven't been sent before
-        if entry.link not in sentLinkList:
+        if entry.link not in sentLinkList and entry.title not in sentTitleList:
 
+            # keyword is in the title
             for keyword in keywordList:
                 if keyword in entry.title:
-                    #print(entry.title + ' ' + entry.link)
                     sendChat(chatRoomUrl + token, entry.title + ' ' + entry.link)
 
-                    f = open(sentLinks, 'a+')
-                    f.write(entry.link + '\n')
-                    f.close()
+                    # save sent link and title to file
+                    writeFile(sentLinks, entry.link)
+                    writeFile(sentTitles, entry.title)
                     break
             
 
