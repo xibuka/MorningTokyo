@@ -51,9 +51,8 @@ keywordList = [
 sentLinks = '/tmp/sentLinks'
 sentTitles = '/tmp/sentTitles'
 
+
 # Hangouts Chat incoming webhook
-
-
 def sendChat(chatRoom, chatContent):
     bot_message = {'text':  chatContent}
 
@@ -115,7 +114,14 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument('token', type=str, help='token of Google chat room')
-    token = parser.parse_args().token
+    parser.add_argument('--debug', action='store_true')
+    args = parser.parse_args()
+    token = args.token
+
+    sentLinkList = readFile(sentLinks)
+    if args.debug:
+        sendChat(chatRoomUrl + token,
+                 'DEBUG: sentLinkList\n' + '\n'.join(sentLinkList))
 
     for rssLink in rssList:
         rssBot(rssLink)
