@@ -93,7 +93,7 @@ def rssBot(rssLink):
 
     for entry in d.entries:
         # haven't been sent before
-        if entry.link not in sentLinkList and entry.title not in sentTitleList:
+        if entry.link not in sentLinkList:
 
             # keyword is in the title
             for keyword in keywordList:
