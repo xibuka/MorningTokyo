@@ -49,8 +49,6 @@ keywordList = [
 ]
 
 sentLinks = '/tmp/sentLinks'
-sentTitles = '/tmp/sentTitles'
-
 
 # Hangouts Chat incoming webhook
 def sendChat(chatRoom, chatContent):
@@ -89,7 +87,6 @@ def rssBot(rssLink):
     # open and read file which contains already sent link and title
     # return a list
     sentLinkList = readFile(sentLinks)
-    sentTitleList = readFile(sentTitles)
 
     # get rss data and parse to d
     d = feedparser.parse(rssLink)
@@ -106,7 +103,6 @@ def rssBot(rssLink):
 
                     # save sent link and title to file
                     writeFile(sentLinks, entry.link)
-                    writeFile(sentTitles, entry.title)
                     break
 
 
