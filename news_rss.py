@@ -48,7 +48,7 @@ keywordList = [
     'Intel'
 ]
 
-sentLinks = '/tmp/sentLinks'
+sentLinks = '/var/log/sentLinks'
 
 # Hangouts Chat incoming webhook
 def sendChat(chatRoom, chatContent):
