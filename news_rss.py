@@ -44,8 +44,11 @@ keywordList = [
     # 'クラウド',
     # 'cloud',
     'Dell',
-    'nuc'
-    'Intel'
+    'nuc',
+    'Intel',
+    'ThinkPad',
+    'Sony',
+    'ソニー',
 ]
 
 sentLinks = '/var/log/sentLinks'
